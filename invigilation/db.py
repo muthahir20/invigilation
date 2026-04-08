@@ -1,12 +1,13 @@
 from sqlalchemy import create_engine, text
 import pandas as pd
 import hashlib
+import streamlit as st
 
-USERNAME = "kCCeTyfqG4q97x6.root"
-PASSWORD = "O5K4JarXblpcn7gg"
-HOST = "gateway01.ap-southeast-1.prod.aws.tidbcloud.com"
-PORT = 4000
-DB_NAME = "Invigilation"
+USERNAME = st.secrets["DB_USERNAME"]
+PASSWORD = st.secrets["DB_PASSWORD"]
+HOST = st.secrets["DB_HOST"]
+PORT = st.secrets["DB_PORT"]
+DATABASE = st.secrets["DB_NAME"]
 
 engine = create_engine(
     f"mysql+pymysql://{USERNAME}:{PASSWORD}@{HOST}:{PORT}/{DB_NAME}"
