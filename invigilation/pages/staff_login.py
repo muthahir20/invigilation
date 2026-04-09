@@ -107,9 +107,9 @@ else:
         st.markdown("---")
 
         # ---------------- PDF ----------------
-        file = generate_pdf(user["name"], user["dept"], duties)
-        with open(file, "rb") as f:
-            st.download_button("📄 Download PDF", f, file_name=file)
+        # file = generate_pdf(user["name"], user["dept"], duties)
+        # with open(file, "rb") as f:
+            # st.download_button("📄 Download PDF", f, file_name=file)
 
         st.markdown("### 📅 Your Duties")
 
