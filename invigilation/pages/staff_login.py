@@ -43,7 +43,8 @@ def generate_pdf(name, dept, duties):
     return file_path
 
 # UI
-st.markdown("<h2 style='text-align:center;'>👨‍🏫 Staff Login</h2>", unsafe_allow_html=True)
+st.markdown("<h2 style='text-align:center;'>Invigilation Duty Schedule - April 2026</h2>", unsafe_allow_html=True)
+st.markdown("<h3 style='text-align:center;'>Staff Login</h3>", unsafe_allow_html=True)
 
 if st.session_state.user is None:
     with st.container():
