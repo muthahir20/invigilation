@@ -9,10 +9,9 @@ HOST = st.secrets["DB_HOST"]
 PORT = st.secrets["DB_PORT"]
 DATABASE = st.secrets["DB_NAME"]
 
-DATABASE_URL = f"mysql+pymysql://{USERNAME}:{PASSWORD}@{HOST}:{PORT}/{DATABASE}?ssl=true"
-
 engine = create_engine(
-    DATABASE_URL,
+    f"mysql+pymysql://{USERNAME}:{PASSWORD}@{HOST}:{PORT}/{DATABASE}",
+    connect_args={"ssl": {}},
     pool_pre_ping=True,
     pool_recycle=1800
 )
