@@ -1,92 +1,95 @@
 import streamlit as st
 
-
 def apply_ui():
-
     st.markdown("""
     <style>
 
-    @media (prefers-color-scheme: light) {
-        .card {
-            background:#1e1e1e;
-            color:#fff;
-            padding:25px;
-            border-radius:15px;
-            margin-top:20px;
-            box-shadow:0 4px 12px rgba(0,0,0,0.2);
-        }
-        .duty-card {
-            background:#2b2b2b;
-            color:#fff;
-            padding:15px;
-            border-radius:10px;
-            margin:10px 0;
-            border-left:5px solid #4CAF50;
-        }
+    /* Main App */
+    .stApp {
+        font-family: 'Segoe UI', sans-serif;
     }
 
-    @media (prefers-color-scheme: dark) {
-        .card {
-            background:#fff;
-            color:#000;
-            padding:25px;
-            border-radius:15px;
-            margin-top:20px;
-            box-shadow:0 4px 12px rgba(0,0,0,0.1);
-        }
-        .duty-card {
-            background:#f5f5f5;
-            color:#000;
-            padding:15px;
-            border-radius:10px;
-            margin:10px 0;
-            border-left:5px solid #4CAF50;
-        }
+    /* Sidebar */
+    section[data-testid="stSidebar"] {
+        background-color: #111827;
+        color: white;
     }
 
+    section[data-testid="stSidebar"] * {
+        color: white !important;
+    }
+
+    /* Titles */
     .title {
         text-align:center;
-        font-size:32px;
+        font-size:36px;
         font-weight:700;
     }
 
     .subtitle {
         text-align:center;
         opacity:0.7;
-        margin-bottom:20px;
+        margin-bottom:25px;
+    }
+
+    /* Cards */
+    .card {
+        padding: 25px;
+        border-radius: 16px;
+        background: #1f2937;
+        color: white;
+        box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+    }
+
+    /* Duty Card */
+    .duty-card {
+        background:#1f2937;
+        color:white;
+        padding:14px;
+        border-radius:10px;
+        margin:10px 0;
+        border-left:5px solid #4CAF50;
+    }
+
+    /* Stat Cards */
+    .stat-card {
+        padding: 20px;
+        border-radius: 14px;
+        text-align: center;
+        font-size: 18px;
+        font-weight: bold;
+        color: white;
+    }
+
+    .fn { background: #16a34a; }
+    .an { background: #2563eb; }
+    .other { background: #9333ea; }
+
+    /* Buttons */
+    .stButton > button {
+        width: 100%;
+        border-radius: 10px;
+        font-weight: 600;
+    }
+    /* Input styling */
+    input {
+    border-radius: 10px !important;
+    padding: 10px !important;
     }
     .card:empty {
     display: none;
     }
-    
-    .card:hover {
-    transform: translateY(-3px);
-    transition: 0.2s ease;
-    }
-    
-    /* Stats cards */
-    .stat-card {
-    padding: 15px;
-    border-radius: 12px;
-    text-align: center;
-    margin: 5px;
-    font-weight: bold;
+                /* Duty color coding */
+    .duty-card.fn {
+        border-left: 5px solid #22c55e;  /* green */
     }
 
-/* Light Mode */
-    @media (prefers-color-scheme: light) {
-    .stat-card { background: #2b2b2b; color: white; }
-    .fn { border-left: 5px solid #4CAF50; }
-    .an { border-left: 5px solid #2196F3; }
-    .other { border-left: 5px solid #9C27B0; }
+    .duty-card.an {
+        border-left: 5px solid #3b82f6;  /* blue */
     }
 
-/* Dark Mode */
-    @media (prefers-color-scheme: dark) {
-    .stat-card { background: #f5f5f5; color: black; }
-    .fn { border-left: 5px solid #4CAF50; }
-    .an { border-left: 5px solid #2196F3; }
-    .other { border-left: 5px solid #9C27B0; }
+    .duty-card.other {
+        border-left: 5px solid #a855f7;  /* purple */
     }
 
     </style>
