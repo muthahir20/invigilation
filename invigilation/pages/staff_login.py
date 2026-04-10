@@ -50,8 +50,8 @@ if st.session_state.user is None:
     with st.container():
         st.markdown('<div class="card">', unsafe_allow_html=True)
 
-        email = st.text_input("Email")
-        password = st.text_input("Password", type="password")
+        email = st.text_input("Email (Official Mail ID)")
+        password = st.text_input("Password (Bank Account Last 5 Digit)", type="password")
 
         if st.button("Login"):
             user = login(email.strip().lower(), password.strip())
