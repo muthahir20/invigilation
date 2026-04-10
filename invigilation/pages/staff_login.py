@@ -110,29 +110,32 @@ else:
         # ---------------- PDF ----------------
         # file = generate_pdf(user["name"], user["dept"], duties)
         # with open(file, "rb") as f:
-            # st.download_button("📄 Download PDF", f, file_name=file)
+        #     st.download_button("📄 Download PDF", f, file_name=file)
 
         st.markdown("### 📅 Your Duties")
 
         # ---------------- DUTY LIST ----------------
-        for _, row in duties.iterrows():
+        for i, (_, row) in enumerate(duties.iterrows(), start=1):
 
             session = row["session_text"]
+            session_upper = session.upper()
 
-            # Detect FN / AN
-            if "FN" in session.upper():
+            if "FN" in session_upper:
                 card_class = "fn"
-            elif "AN" in session.upper():
+            elif "AN" in session_upper:
                 card_class = "an"
             else:
                 card_class = "other"
 
             st.markdown(f"""
             <div class="duty-card {card_class}">
-                <b>Duty {row['duty_order']}</b><br>
-                {session}
+                 <div style="display:flex; justify-content:space-between;">
+                    <b>Duty {i}</b> 
+                    {session}
+                 </div>
             </div>
             """, unsafe_allow_html=True)
 
     else:
         st.info("No duties assigned")
+
