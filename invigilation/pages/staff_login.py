@@ -65,7 +65,7 @@ if st.session_state.user is None:
                 st.rerun()
             else:
                 st.error("Invalid credentials")
-        st.markdown("For Login Issues Please Contact VP Academic - 96000 16789", unsafe_allow_html=True)
+        st.markdown("For Login Issues Please Contact VP Academic - 9600016789", unsafe_allow_html=True)
         st.markdown('</div>', unsafe_allow_html=True)
 
 else:
