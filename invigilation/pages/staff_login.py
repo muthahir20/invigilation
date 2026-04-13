@@ -1,5 +1,5 @@
 import streamlit as st
-from db import login, get_duties
+from db import login, get_duties, generate_staff_pdf
 import uuid
 from reportlab.platypus import SimpleDocTemplate, Paragraph, Spacer, Table, TableStyle
 from reportlab.lib import colors
@@ -13,34 +13,6 @@ apply_ui()
 if "user" not in st.session_state:
     st.session_state.user = None
 
-# PDF
-def generate_pdf(name, dept, duties):
-    file_path = f"{name}_{uuid.uuid4().hex}.pdf"
-    doc = SimpleDocTemplate(file_path, pagesize=A4)
-    styles = getSampleStyleSheet()
-    content = []
-
-    content.append(Paragraph("<b>INVIGILATION DUTY SCHEDULE</b>", styles['Title']))
-    content.append(Spacer(1, 10))
-    content.append(Paragraph(f"Name: {name}", styles['Normal']))
-    content.append(Paragraph(f"Department: {dept}", styles['Normal']))
-    content.append(Spacer(1, 10))
-
-    data = [["S.No", "Session"]]
-    for _, row in duties.iterrows():
-        data.append([row["duty_order"], row["session_text"]])
-
-    table = Table(data)
-    table.setStyle(TableStyle([
-        ("GRID", (0,0), (-1,-1), 1, colors.black),
-        ("BACKGROUND", (0,0), (-1,0), colors.grey),
-        ("TEXTCOLOR", (0,0), (-1,0), colors.white),
-    ]))
-
-    content.append(table)
-    doc.build(content)
-
-    return file_path
 
 # UI
 st.markdown("<h2 style='text-align:center;'>Invigilation Duty Schedule - April 2026</h2>", unsafe_allow_html=True)
@@ -107,10 +79,14 @@ else:
 
         st.markdown("---")
 
-        # ---------------- PDF ----------------
-        # file = generate_pdf(user["name"], user["dept"], duties)
-        # with open(file, "rb") as f:
-        #     st.download_button("📄 Download PDF", f, file_name=file)
+        file = generate_staff_pdf(user["name"], user["dept"], duties)
+
+        with open(file, "rb") as f:
+            st.download_button(
+                "📄 Download Duty Report",
+                f,
+                file_name=file
+            )
 
         st.markdown("### 📅 Your Duties")
 
