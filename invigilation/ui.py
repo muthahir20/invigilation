@@ -94,3 +94,56 @@ def apply_ui():
 
     </style>
     """, unsafe_allow_html=True)
+        
+    st.markdown("""
+    <style>
+
+    /* Section spacing */
+    .section {
+        margin-top: 25px;
+    }
+
+    /* Header */
+    .section-title {
+        font-size: 20px;
+        font-weight: 600;
+        margin-bottom: 10px;
+    }
+
+    /* Action Cards */
+    .action-card {
+        padding: 20px;
+        border-radius: 14px;
+        margin-bottom: 20px;
+        border: 1px solid rgba(255,255,255,0.1);
+    }
+
+    /* Light mode */
+    @media (prefers-color-scheme: light) {
+        .action-card {
+            background: #2b2b2b;
+            color: white;
+        }
+    }
+
+    /* Dark mode */
+    @media (prefers-color-scheme: dark) {
+        .action-card {
+            background: #ffffff;
+            color: black;
+        }
+    }
+
+    /* Buttons spacing */
+    .stButton > button {
+        margin-top: 10px;
+    }
+
+    /* Divider */
+    .divider {
+        margin: 25px 0;
+        border-top: 1px solid rgba(150,150,150,0.2);
+    }
+
+    </style>
+    """, unsafe_allow_html=True)
